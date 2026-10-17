@@ -1,0 +1,57 @@
+<!--
+  ============================================================================
+  CARTE QUERYSHIELD — section « Arsenal » du vitrine query-intel.com
+  ============================================================================
+  Copiez ce bloc à la suite des autres cartes d'outils (Ghosint, Tracker…).
+
+  Le style est volontairement en inline + variables pour fonctionner quel que
+  soit le framework du vitrine. Si votre site utilise déjà un composant de
+  carte, reprenez uniquement le contenu (titre / description / lien) et
+  habillez-le avec vos classes existantes — l'important est le LIEN vers
+  https://shield.query-intel.com (ou le sous-domaine que vous aurez choisi).
+
+  À PERSONNALISER :
+    - l'URL du href (shield.query-intel.com si vous suivez le guide DEPLOY.md)
+    - éventuellement le libellé du bouton (« Ouvrir l'outil »)
+  ============================================================================
+-->
+<div class="qs-arsenal-card" style="
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 24px;
+    background: linear-gradient(180deg, rgba(94,184,255,0.06), rgba(11,15,26,0.4));
+    max-width: 360px;
+  ">
+  <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+    <span style="
+        display:flex; height:36px; width:36px; align-items:center; justify-content:center;
+        border:1px solid rgba(94,184,255,0.4); border-radius:10px;
+        background: rgba(94,184,255,0.1);
+      ">
+      <!-- icône bouclier -->
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#5EB8FF" stroke-width="1.6">
+        <path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6l7-3z" stroke-linejoin="round"/>
+        <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    <h3 style="margin:0; font-size:17px; font-weight:600; color:#E2E8F0;">QueryShield</h3>
+  </div>
+
+  <p style="margin:0 0 18px; font-size:13.5px; line-height:1.6; color:#94A3B8;">
+    Analyseur anti-arnaque pour e-mails, SMS et messages instantanés.
+    Collez un message suspect, obtenez un score de risque, la liste des
+    signaux détectés et les gestes à faire. Vérifiez aussi l'authenticité
+    d'un site, sans jamais l'ouvrir.
+  </p>
+
+  <a href="https://shield.query-intel.com"
+     target="_blank"
+     rel="noopener noreferrer"
+     style="
+       display:inline-block; padding:10px 18px; border-radius:10px;
+       background:#5EB8FF; color:#06121F; font-size:13px; font-weight:600;
+       text-decoration:none;
+     ">
+    Ouvrir l'outil →
+  </a>
+</div>

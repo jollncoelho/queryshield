@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "rootDir": ".",
+    "outDir": ".tools",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": false,
+    "declaration": false,
+    "sourceMap": false,
+    "types": ["node"]
+  },
+  "include": [
+    "src/lib/db/**/*.ts",
+    "src/lib/security/**/*.ts",
+    "src/lib/engine/**/*.ts",
+    "src/lib/i18n/**/*.ts",
+    "src/lib/license.ts",
+    "tools/**/*.ts"
+  ]
+}

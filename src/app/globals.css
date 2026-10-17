@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Mono', Consolas, monospace;
+}
+
+html,
+body {
+  background-color: #070A11;
+  color: #E8EDF7;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(46, 155, 240, 0.32);
+}
+
+*:focus-visible {
+  outline: 2px solid #2E9BF0;
+  outline-offset: 2px;
+}
+
+/* Scrollbar discret, coherent avec le theme sombre */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0E17;
+}
+::-webkit-scrollbar-thumb {
+  background: #1F2C46;
+  border-radius: 999px;
+  border: 2px solid #0A0E17;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2A3A5C;
+}
+
+@layer components {
+  .qs-card {
+    @apply rounded-2xl border border-line bg-ink-850/80 backdrop-blur-sm;
+  }
+
+  .qs-label {
+    @apply text-[11px] font-medium uppercase tracking-[0.14em] text-slate-500;
+  }
+
+  .qs-input {
+    @apply w-full rounded-xl border border-line bg-ink-900 px-3.5 py-2.5 text-[13px] text-slate-100
+           placeholder:text-slate-600 focus:border-brand-500 focus:outline-none;
+  }
+
+  .qs-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-[13px] font-medium
+           transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .qs-btn-primary {
+    @apply qs-btn bg-brand-500 text-white hover:bg-brand-400;
+  }
+
+  .qs-btn-ghost {
+    @apply qs-btn border border-line bg-ink-800 text-slate-300 hover:border-line-strong hover:text-slate-100;
+  }
+
+  .qs-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-medium;
+  }
+}
+
+@keyframes qs-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
+}
+
+.qs-scanning::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 33%;
+  background: linear-gradient(90deg, transparent, rgba(46, 155, 240, 0.35), transparent);
+  animation: qs-sweep 1.1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qs-scanning::after {
+    animation: none;
+  }
+}
