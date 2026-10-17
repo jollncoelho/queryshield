@@ -131,13 +131,13 @@ export const pt: Dictionary = {
   },
 
   home: {
-    chip: 'Auxílio à decisão · análise estática · nenhum dado conservado',
-    titleLead: 'Verifique uma mensagem suspeita',
-    titleAccent: 'antes',
-    titleTail: 'de agir.',
+    chip: 'Análise estática · motor heurístico · zero dados conservados',
+    titleLead: 'Analisador tático de ameaças',
+    titleAccent: '—',
+    titleTail: 'submeta um SMS, um e-mail ou um URL para inspeção heurística instantânea',
     intro:
-      'O QueryShield analisa e-mails, SMS e mensagens instantâneas à procura de tentativas de phishing, burlas e fraude. O motor não se limita a dizer «perigoso»: explica cada sinal detetado e indica o que deve fazer.',
-    ctaAnalyze: 'Analisar uma mensagem',
+      'Inspeção heurística de e-mails, SMS e mensagens instantâneas. Extração de indicadores, correspondência com o referencial de marcas, léxico de engenharia social: cada sinal é explicado, ponderado e restituído em pontuação e via de remediação.',
+    ctaAnalyze: 'Lançar a auditoria da amostra',
     ctaSite: 'Verificar um site',
     ctaPricing: 'Ver os planos',
     ctaApi: 'Integrar a API',
@@ -204,8 +204,8 @@ export const pt: Dictionary = {
     headersHelp:
       'É a verificação mais fiável: SPF, DKIM e DMARC permitem saber se o domínio remetente é autêntico. Sem cabeçalhos, o domínio do remetente é ainda analisado a partir do campo acima ou da linha «De: …» da mensagem.',
     samplesLabel: 'Exemplos de demonstração',
-    submit: 'Analisar esta mensagem',
-    submitting: 'A analisar…',
+    submit: 'Inspecionar o vetor',
+    submitting: 'A inspecionar o vetor…',
     privacyNote: 'Processamento em memória · nenhuma mensagem conservada · nenhuma ligação aberta',
     disclaimer:
       'Este relatório é um auxílio à decisão baseado numa análise automática. Nenhum sistema garante uma deteção 100 % fiável: em caso de dúvida, verifique diretamente junto da organização em causa através de um número que tenha encontrado por si.',
@@ -233,7 +233,7 @@ export const pt: Dictionary = {
     titleTail: 'aquele que diz ser?',
     intro:
       'Cole um endereço de site ou um nome de domínio. O QueryShield compara o domínio com a lista de referência de organizações, deteta imitações e, se o ativar, verifica a idade do domínio junto do registo oficial. O site suspeito nunca é contactado: abri-lo seria avisar o atacante.',
-    ctaAnalyzer: 'Analisar uma mensagem',
+    ctaAnalyzer: 'Inspecionar o vetor',
     ctaApi: 'Integrar a API',
     criteriaTitle: 'O que é verificado',
     criteria1Title: 'Usurpação de marca',

@@ -50,10 +50,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <I18nProvider locale={locale} dictionary={t}>
           <div
             aria-hidden
-            className="pointer-events-none fixed inset-0 -z-10 opacity-[0.35]"
+            className="pointer-events-none fixed inset-0 -z-10 opacity-[0.18]"
             style={{
               backgroundImage:
-                'radial-gradient(600px circle at 15% -5%, rgba(46,155,240,0.14), transparent 60%), radial-gradient(500px circle at 90% 0%, rgba(34,211,238,0.08), transparent 55%)',
+                'radial-gradient(700px circle at 50% -10%, rgba(0,242,254,0.10), transparent 62%)',
             }}
           />
           <Header />

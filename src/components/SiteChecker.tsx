@@ -209,7 +209,7 @@ export function SiteChecker() {
                     })}
                   </span>
                   {result.meta.active && (
-                    <span className="qs-chip border-sky-500/40 bg-sky-500/10 text-sky-300">{t.site.activeChip}</span>
+                    <span className="qs-chip border-brand-500/40 bg-brand-500/10 text-brand-300">{t.site.activeChip}</span>
                   )}
                 </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { SAMPLES, type Sample } from '@/lib/samples';
 import type { AnalyzeResult, Channel } from '@/lib/engine/types';
 import { apiErrorMessage } from '@/lib/i18n/labels';
@@ -21,6 +21,18 @@ type ApiResponse = AnalyzeResult & {
 
 const MAX_CHARS = 20000;
 
+/**
+ * Journal de traitement affiche pendant l'analyse. Volontairement non traduit :
+ * une sortie de console reste technique, comme dans les outils d'analyse reels.
+ */
+const CONSOLE_STEPS = [
+  '[+] Parsing headers…',
+  '[+] Checking domain reputation…',
+  '[+] Extracting indicators…',
+  '[+] Scoring heuristics…',
+  '[+] Vector evaluated.',
+];
+
 export function Analyzer() {
   const { t } = useI18n();
   const [text, setText] = useState('');
@@ -33,6 +45,26 @@ export function Analyzer() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<ApiResponse | null>(null);
   const [activeSample, setActiveSample] = useState<string | null>(null);
+  const [logStep, setLogStep] = useState(0);
+
+  /* Revelation progressive du journal pendant l'analyse (respecte prefers-reduced-motion) */
+  useEffect(() => {
+    if (!loading) {
+      setLogStep(0);
+      return;
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setLogStep(CONSOLE_STEPS.length);
+      return;
+    }
+    let step = 0;
+    const timer = window.setInterval(() => {
+      step += 1;
+      setLogStep(step);
+      if (step >= CONSOLE_STEPS.length) window.clearInterval(timer);
+    }, 420);
+    return () => window.clearInterval(timer);
+  }, [loading]);
 
   const channels: { value: Channel; label: string }[] = [
     { value: 'email', label: t.analyzer.channelEmail },
@@ -146,9 +178,28 @@ export function Analyzer() {
               </button>
             ))}
           </div>
-          <span className="font-mono text-[11px] text-slate-600">
-            {text.length} / {MAX_CHARS}
+        </div>
+
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 border-b border-line/70 px-5 py-2 font-mono text-[10.5px] uppercase tracking-[0.08em] text-slate-500">
+          <span>
+            ENGINE <b className="text-brand-400">Q-CORE v2.4</b>
           </span>
+          <span aria-hidden className="text-line-strong">
+            ·
+          </span>
+          <span>
+            MODE <b className="text-brand-400">STATIC HEURISTICS</b>
+          </span>
+          <span aria-hidden className="text-line-strong">
+            ·
+          </span>
+          <span>
+            IOC CHECK <b className="text-brand-400">ACTIVE</b>
+          </span>
+          <span aria-hidden className="text-line-strong">
+            ·
+          </span>
+          <span>{text.length} / {MAX_CHARS}</span>
         </div>
 
         <div className="space-y-3 p-5">
@@ -187,6 +238,26 @@ export function Analyzer() {
               <div className="qs-scanning pointer-events-none absolute inset-0 overflow-hidden rounded-xl" />
             )}
           </div>
+
+          {(loading || result) && (
+            <div className="qs-console-log" aria-hidden="true">
+              {(result ? CONSOLE_STEPS : CONSOLE_STEPS.slice(0, logStep)).map((line) => (
+                <div key={line} className="qs-console-log__line">
+                  <span className="text-emerald-400/90">[+]</span>
+                  {line.slice(3)}
+                </div>
+              ))}
+              {result && (
+                <div className="qs-console-log__line text-brand-300">
+                  <span className="text-emerald-400/90">[✓]</span>
+                  audit complete · signals: {result.findings.length} · score: {result.score}/100
+                </div>
+              )}
+              {loading && logStep < CONSOLE_STEPS.length && (
+                <span className="qs-console-log__cursor" />
+              )}
+            </div>
+          )}
 
           {channel === 'email' && (
             <p className="text-[11px] leading-relaxed text-slate-500">{t.analyzer.senderHelp}</p>

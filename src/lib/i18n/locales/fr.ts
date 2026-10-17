@@ -140,13 +140,13 @@ export const fr = {
   },
 
   home: {
-    chip: 'Aide a la decision · analyse statique · aucune donnee conservee',
-    titleLead: 'Verifiez un message suspect',
-    titleAccent: 'avant',
-    titleTail: 'd agir.',
+    chip: 'Analyse statique · heuristique · zero donnee conservee',
+    titleLead: 'Analyseur de menaces tactiques',
+    titleAccent: '—',
+    titleTail: 'soumettez un SMS, un e-mail ou une URL pour inspection heuristique instantanee',
     intro:
-      'QueryShield analyse les e-mails, les SMS et les messages instantanes a la recherche de tentatives d hameconnage, d arnaques et de fraude. Le moteur ne se contente pas de dire « dangereux » : il explique chaque signal detecte et indique la conduite a tenir.',
-    ctaAnalyze: 'Analyser un message',
+      'Inspection heuristique d e-mails, de SMS et de messages instantanes. Extraction des indicateurs, correspondance au referentiel de marques, application du lexique d ingenierie sociale : chaque signal est explique, pondere, puis restitue en score et en piste de remediation.',
+    ctaAnalyze: 'Lancer l audit de l echantillon',
     ctaSite: 'Verifier un site',
     ctaPricing: 'Voir les offres',
     ctaApi: 'Integrer l API',
@@ -213,8 +213,8 @@ export const fr = {
     headersHelp:
       'C est la verification la plus fiable : SPF, DKIM et DMARC permettent de savoir si le domaine expediteur est authentique. Sans en-tetes, le domaine de l expediteur est tout de meme analyse a partir du champ ci-dessus ou de la ligne « De : ... » du message.',
     samplesLabel: 'Exemples de demonstration',
-    submit: 'Analyser ce message',
-    submitting: 'Analyse en cours…',
+    submit: 'Inspecter le vecteur',
+    submitting: 'Inspection du vecteur…',
     privacyNote: 'Traitement en memoire · aucun message conserve · aucun lien ouvert',
     disclaimer:
       'Ce rapport est une aide a la decision fondee sur une analyse automatisee. Aucun systeme ne garantit une detection fiable a 100 % : en cas de doute, verifiez directement aupres de l organisme concerne par un numero que vous avez trouve vous-meme.',
@@ -250,7 +250,7 @@ export const fr = {
     titleTail: 'celui qu il pretend etre ?',
     intro:
       'Collez une adresse de site ou un nom de domaine. QueryShield compare le domaine au referentiel des organisations francophones, detecte les imitations et, si vous l activez, verifie l age du domaine aupres de l annuaire officiel. Le site suspect n est jamais contacte : l ouvrir reviendrait a prevenir l attaquant.',
-    ctaAnalyzer: 'Analyser un message',
+    ctaAnalyzer: 'Inspecter le vecteur',
     ctaApi: 'Integrer l API',
     criteriaTitle: 'Ce qui est verifie',
     criteria1Title: 'Usurpation de marque',

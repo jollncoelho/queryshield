@@ -44,7 +44,7 @@ export function FindingsList({ findings }: FindingsListProps) {
                 </span>
                 <span className="qs-chip border-line bg-ink-900 text-slate-400">{t.category[item.category]}</span>
                 {item.sources.includes('llm') && (
-                  <span className="qs-chip border-sky-500/40 bg-sky-500/10 text-sky-300">{t.common.semantic}</span>
+                  <span className="qs-chip border-brand-500/40 bg-brand-500/10 text-brand-300">{t.common.semantic}</span>
                 )}
                 <span className="ml-auto font-mono text-[10px] text-slate-600">{item.id}</span>
               </div>

@@ -131,13 +131,13 @@ export const en: Dictionary = {
   },
 
   home: {
-    chip: 'Decision aid · static analysis · no data retained',
-    titleLead: 'Check a suspicious message',
-    titleAccent: 'before',
-    titleTail: 'you act.',
+    chip: 'Static analysis · heuristic engine · zero data retained',
+    titleLead: 'Tactical threat analyzer',
+    titleAccent: '—',
+    titleTail: 'submit an SMS, email or URL for instant heuristic inspection',
     intro:
-      'QueryShield analyses emails, text messages and instant messages for phishing, scams and fraud. The engine does not just say “dangerous”: it explains every signal it detects and tells you what to do.',
-    ctaAnalyze: 'Analyse a message',
+      'Heuristic inspection of emails, text messages and instant messages. Indicator extraction, brand-reference matching, social-engineering lexicon: every signal is explained, weighted, then rendered as a score and a remediation trail.',
+    ctaAnalyze: 'Run the sample audit',
     ctaSite: 'Check a website',
     ctaPricing: 'See plans',
     ctaApi: 'Integrate the API',
@@ -204,8 +204,8 @@ export const en: Dictionary = {
     headersHelp:
       'This is the most reliable check: SPF, DKIM and DMARC tell you whether the sending domain is genuine. Without headers, the sender domain is still analysed from the field above or from the “From: …” line of the message.',
     samplesLabel: 'Demonstration samples',
-    submit: 'Analyse this message',
-    submitting: 'Analysing…',
+    submit: 'Inspect the vector',
+    submitting: 'Inspecting vector…',
     privacyNote: 'Processed in memory · no message retained · no link opened',
     disclaimer:
       'This report is a decision aid based on an automated analysis. No system guarantees 100% reliable detection: if in doubt, check directly with the organisation concerned using a number you have found yourself.',
@@ -233,7 +233,7 @@ export const en: Dictionary = {
     titleTail: 'the one it claims to be?',
     intro:
       'Paste a website address or a domain name. QueryShield compares the domain against a reference list of organisations, detects imitations and, if you enable it, checks the domain age with the official registry. The suspicious site is never contacted: opening it would warn the attacker.',
-    ctaAnalyzer: 'Analyse a message',
+    ctaAnalyzer: 'Inspect the vector',
     ctaApi: 'Integrate the API',
     criteriaTitle: 'What is checked',
     criteria1Title: 'Brand impersonation',

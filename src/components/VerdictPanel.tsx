@@ -34,7 +34,7 @@ export function VerdictPanel({ result, quota }: VerdictPanelProps) {
               })}
             </span>
             {result.meta.llmUsed && (
-              <span className="qs-chip border-sky-500/40 bg-sky-500/10 text-sky-300">
+              <span className="qs-chip border-brand-500/40 bg-brand-500/10 text-brand-300">
                 {t.common.semanticActive}
               </span>
             )}

@@ -87,7 +87,7 @@ export const SEVERITY_STYLE: Record<Severity, { text: string; bg: string; border
   high: { text: 'text-orange-300', bg: 'bg-orange-500/10', border: 'border-orange-500/40', hex: '#F97316' },
   medium: { text: 'text-amber-300', bg: 'bg-amber-500/10', border: 'border-amber-500/40', hex: '#F59E0B' },
   low: { text: 'text-slate-300', bg: 'bg-slate-500/10', border: 'border-slate-500/40', hex: '#94A3B8' },
-  info: { text: 'text-sky-300', bg: 'bg-sky-500/10', border: 'border-sky-500/40', hex: '#38BDF8' },
+  info: { text: 'text-brand-300', bg: 'bg-brand-500/10', border: 'border-brand-500/40', hex: '#00F2FE' },
 };
 
 /** Niveau de fiabilite, a traduire par l'appelant (`common.confidence*`). */
