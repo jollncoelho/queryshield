@@ -141,9 +141,9 @@ export const fr = {
 
   home: {
     chip: 'Analyse statique · heuristique · zero donnee conservee',
-    titleLead: 'Analyseur de menaces tactiques',
-    titleAccent: '—',
-    titleTail: 'soumettez un SMS, un e-mail ou une URL pour inspection heuristique instantanee',
+    titleLead: 'Analyseur de menaces',
+    titleAccent: 'tactiques',
+    titleTail: '— inspection heuristique instantanee de vos SMS, e-mails et URLs',
     intro:
       'Inspection heuristique d e-mails, de SMS et de messages instantanes. Extraction des indicateurs, correspondance au referentiel de marques, application du lexique d ingenierie sociale : chaque signal est explique, pondere, puis restitue en score et en piste de remediation.',
     ctaAnalyze: 'Lancer l audit de l echantillon',

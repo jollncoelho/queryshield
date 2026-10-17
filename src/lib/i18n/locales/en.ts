@@ -132,9 +132,9 @@ export const en: Dictionary = {
 
   home: {
     chip: 'Static analysis · heuristic engine · zero data retained',
-    titleLead: 'Tactical threat analyzer',
-    titleAccent: '—',
-    titleTail: 'submit an SMS, email or URL for instant heuristic inspection',
+    titleLead: 'Tactical threat',
+    titleAccent: 'analyzer',
+    titleTail: '— instant heuristic inspection of your SMS, emails and URLs',
     intro:
       'Heuristic inspection of emails, text messages and instant messages. Indicator extraction, brand-reference matching, social-engineering lexicon: every signal is explained, weighted, then rendered as a score and a remediation trail.',
     ctaAnalyze: 'Run the sample audit',

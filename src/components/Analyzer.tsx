@@ -249,7 +249,7 @@ export function Analyzer() {
               ))}
               {result && (
                 <div className="qs-console-log__line text-brand-300">
-                  <span className="text-emerald-400/90">[✓]</span>
+                  <span className="text-emerald-400/90">[✓]</span>{' '}
                   audit complete · signals: {result.findings.length} · score: {result.score}/100
                 </div>
               )}

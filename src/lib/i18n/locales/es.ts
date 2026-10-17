@@ -132,9 +132,9 @@ export const es: Dictionary = {
 
   home: {
     chip: 'Análisis estático · motor heurístico · cero datos conservados',
-    titleLead: 'Analizador táctico de amenazas',
-    titleAccent: '—',
-    titleTail: 'envíe un SMS, un correo o una URL para inspección heurística instantánea',
+    titleLead: 'Analizador táctico de',
+    titleAccent: 'amenazas',
+    titleTail: '— inspección heurística instantánea de sus SMS, correos y URLs',
     intro:
       'Inspección heurística de correos, SMS y mensajes instantáneos. Extracción de indicadores, correspondencia con el referencial de marcas, léxico de ingeniería social: cada señal se explica, se pondera y se restituye en puntuación y vía de remediación.',
     ctaAnalyze: 'Lanzar la auditoría de la muestra',
