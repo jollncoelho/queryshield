@@ -1,0 +1,29 @@
+# Reverse proxy HTTPS pour QueryShield.
+#
+# Caddy obtient et renouvelle le certificat Let's Encrypt tout seul : c'est ce
+# qui rend l'installation plus simple que nginx pour ce cas d'usage.
+#
+# Remplacer shield.query-intel.com par le domaine reel, puis :
+#   systemctl reload caddy
+
+shield.query-intel.com {
+	encode zstd gzip
+
+	# Caddy ajoute X-Forwarded-For. L'application doit savoir combien de proxys
+	# la precedent pour extraire la vraie adresse cliente, sinon toutes les
+	# requetes semblent venir de 127.0.0.1 et la limitation de debit devient
+	# inoperante. D'ou QUERYSHIELD_TRUSTED_PROXY_HOPS=1 cote application.
+	reverse_proxy 127.0.0.1:4321 {
+		header_up X-Real-IP {remote_host}
+	}
+
+	# Les en-tetes de securite sont deja poses par Next (next.config.mjs) ;
+	# ne pas les dupliquer ici.
+
+	log {
+		output file /var/log/caddy/queryshield.log {
+			roll_size 20MiB
+			roll_keep 5
+		}
+	}
+}

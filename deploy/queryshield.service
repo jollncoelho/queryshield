@@ -1,0 +1,41 @@
+[Unit]
+Description=QueryShield (site anti-arnaque + API)
+Documentation=https://github.com/jollncoelho/queryshield
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=queryshield
+Group=queryshield
+WorkingDirectory=/opt/queryshield
+
+# Les secrets vivent dans ce fichier, lisible par le seul compte de service.
+EnvironmentFile=/opt/queryshield/.env.production
+Environment=NODE_ENV=production
+Environment=PORT=4321
+
+# Repertoire d'etat : systemd cree /var/lib/queryshield, y donne l'acces en
+# ecriture au compte de service, et le conserve entre les deploiements.
+# C'est la que doit pointer QUERYSHIELD_DB_FILE — jamais dans /opt/queryshield,
+# qui est ecrase a chaque mise a jour.
+StateDirectory=queryshield
+
+ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -p 4321
+Restart=always
+RestartSec=3
+
+# Durcissement : le processus n'a besoin que de lire son code et d'ecrire son
+# repertoire d'etat.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/queryshield
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=queryshield
+
+[Install]
+WantedBy=multi-user.target

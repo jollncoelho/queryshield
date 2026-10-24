@@ -90,17 +90,21 @@ C'est structurel : SQLite suppose un système de fichiers inscriptible et une
 seule instance, ce que Vercel serverless ne fournit pas (le commentaire en tête
 de `src/lib/db/sqlite.ts` le dit explicitement).
 
-### Trois sorties possibles
+### La sortie retenue : VPS + SQLite
 
-1. **Héberger le service sur un VPS** (Railway, Fly.io, Scaleway, Hetzner) avec
-   le volume SQLite existant. Le moins de travail : le code est déjà prêt, il
-   suffit de définir `QUERYSHIELD_DB_DRIVER=sqlite` et `QUERYSHIELD_DB_FILE` sur
-   un disque persistant.
-2. **Basculer sur une base réseau** — Turso/libSQL (compatible SQL presque à
-   l'identique avec `better-sqlite3`), Neon/Postgres, ou Upstash Redis. Il faut
-   réimplémenter les interfaces de `src/lib/db/types.ts` ; les routes et le
-   moteur de licences n'ont pas à changer.
-3. **Rester en serverless sans licences durables** — possible, mais alors il ne
-   faut pas vendre de clés.
+Le site sera hébergé sur un VPS avec un volume persistant, ce qui rend SQLite
+utilisable tel quel — aucune couche de persistance à réécrire.
 
-Tant que ce point n'est pas tranché, toute clé émise n'a de valeur qu'en local.
+➡️ Procédure complète : [`DEPLOIEMENT-VPS.md`](./DEPLOIEMENT-VPS.md)
+
+Vérifié en local sur une base placée hors du projet (comme le fera un volume) :
+
+```
+/api/health  -> status=ok, driver=sqlite, durable=true
+clé pro      -> plan=pro, limit=1000, licenseStatus=usable
+clé inconnue -> plan=free, limit=10, licenseStatus=unknown
+redémarrage  -> clé toujours valide, compteur de quota conservé
+```
+
+Tant que la bascule n'est pas faite, les clés émises n'ont de valeur qu'en
+local : en production elles répondent `unknown`.
