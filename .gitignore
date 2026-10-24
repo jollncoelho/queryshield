@@ -20,3 +20,6 @@ next-env.d.ts
 tsconfig.tsbuildinfo
 engine-py/__pycache__/
 engine-py/.venv/
+
+# captures de travail
+preview/

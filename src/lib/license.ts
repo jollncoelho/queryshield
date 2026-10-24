@@ -49,7 +49,16 @@ export function generateLicenseKey(plan: Plan): string {
 
 // --- Etat d'une licence ----------------------------------------------------
 
-export type LicenseUsability = 'usable' | 'expired' | 'revoked';
+/**
+ * Etat d'une licence presentee.
+ *
+ * `unknown` est distinct de l'absence de cle : il signifie qu'une cle a bien
+ * ete transmise mais qu'elle n'existe pas dans notre base. Sans cette
+ * distinction, un acheteur qui se trompe d'un caractere — ou a qui l'on a
+ * donne une cle emise depuis une autre base — voyait simplement « offre
+ * gratuite », sans aucun moyen de comprendre que sa cle etait refusee.
+ */
+export type LicenseUsability = 'usable' | 'expired' | 'revoked' | 'unknown';
 
 /**
  * Une licence est utilisable si elle n'a pas ete revoquee et si sa periode
@@ -237,6 +246,21 @@ export function resolveEntitlement(
         isNew,
       };
     }
+
+    // Une cle a ete transmise mais elle n'existe pas : on le signale
+    // explicitement (`unknown`) au lieu de laisser croire a une absence de cle.
+    return {
+      entitlement: {
+        plan: 'free',
+        dailyQuota: PLAN_QUOTA.free,
+        clientId,
+        licenseKey: presentedKey,
+        licenseStatus: 'unknown',
+        quotaSubject: `anon:${clientId}`,
+        paid: false,
+      },
+      isNew,
+    };
   }
 
   return {

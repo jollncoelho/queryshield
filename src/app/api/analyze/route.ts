@@ -101,11 +101,13 @@ export async function POST(request: Request) {
     recordUsage(entitlement, 'unknown', 'quota_exceeded', 0, Date.now() - startedAt, true);
 
     const suffix =
-      entitlement.licenseStatus === 'expired'
-        ? ' Votre abonnement a expire : renouvelez-le pour retrouver un quota complet.'
-        : entitlement.licenseStatus === 'revoked'
-          ? ' Cette licence a ete revoquee.'
-          : ' Passez a une offre superieure pour continuer.';
+      entitlement.licenseStatus === 'unknown'
+        ? ' La cle de licence presentee n a pas ete reconnue : verifiez-la (un caractere de trop suffit a la rendre invalide).'
+        : entitlement.licenseStatus === 'expired'
+          ? ' Votre abonnement a expire : renouvelez-le pour retrouver un quota complet.'
+          : entitlement.licenseStatus === 'revoked'
+            ? ' Cette licence a ete revoquee.'
+            : ' Passez a une offre superieure pour continuer.';
 
     return NextResponse.json(
       {
