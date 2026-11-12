@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { LOCALE_DESCRIPTORS } from '@/lib/i18n/config';
 import { I18nProvider } from '@/lib/i18n/provider';
 import { getServerDictionary } from '@/lib/i18n/server';
+import { SITE_URL } from '@/lib/site-url';
 
 /**
  * Les metadonnees suivent la langue resolue (cookie, puis `Accept-Language`).
@@ -16,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const descriptor = LOCALE_DESCRIPTORS[locale];
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: t.meta.title,
       template: '%s · QueryShield',
